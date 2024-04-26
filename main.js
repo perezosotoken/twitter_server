@@ -8,9 +8,10 @@ const app = express();
 
     console.log("Received OAuth token:", oauthToken);
     console.log("Received OAuth verifier:", oauthVerifier);
-
-    // Verify the token matches the initial token you received
-    // Proceed to exchange the verifier and token for an access token
+    if (typeof oauthToken === 'undefined' || typeof oauthVerifier === 'undefined') {
+        res.status(400).send('Invalid OAuth token or verifier');
+        return;
+    }
     res.send('You are authenticated!');  // Simple response for demonstration
 });
 
