@@ -4,12 +4,12 @@ const app = express();
 // Define the route /cb
  app.get('/cb', (req, res) => {
     const oauthToken = req.query.oauth_token;
-    const oauthVerifier = req.query.oauth_verifier;
+    const oauthSecret = req.query.oauth_secret;
 
     console.log("Received OAuth token:", oauthToken);
-    console.log("Received OAuth verifier:", oauthVerifier);
-    if (typeof oauthToken === 'undefined' || typeof oauthVerifier === 'undefined') {
-        res.status(400).send('Invalid OAuth token or verifier');
+    console.log("Received OAuth secret:", oauthSecret);
+    if (typeof oauthToken === 'undefined' || typeof oauthSecret === 'undefined') {
+        res.status(400).send('Invalid OAuth token or secret');
         return;
     }
     res.send('You are authenticated!');  // Simple response for demonstration
